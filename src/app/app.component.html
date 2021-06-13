@@ -1,0 +1,26 @@
+<div class="container">
+
+  
+
+<form #form="ngForm" (ngSubmit)='onSubmit(form)'>
+
+<label>Card Number*: </label>
+<input name='1' class='number' [(ngModel)]='values.value1'  maxlength="4" minlength="4" required #value1 (paste)='pasted($event,1)' (input)="changeFocus(1)" autofocus='true'>
+<input name='2' class='number' [(ngModel)]='values.value2'  maxlength="4" minlength="4" required #value2 (paste)='pasted($event,2)' (input)="changeFocus(2)">
+<input name='3' class='number' [(ngModel)]='values.value3'  maxlength="4" minlength="4" required #value3 (paste)='pasted($event,3)' (input)="changeFocus(3)">
+<input name='4' class='number' [(ngModel)]='values.value4'  maxlength="4" minlength="4" required #value4 (paste)='pasted($event,4)' (input)="changeFocus(4)">
+<button>Submit</button>
+</form>
+<br>
+
+<div *ngIf='numbers.length>0'>
+  <label>Entered Card Numbers are:</label><br><br>
+    <table *ngFor='let number of numbers;let i=index'>
+    <tr>
+      <td ><button (click)='deleteNo(number.id)' id='del'>Delete</button></td>
+      <td>{{number.number | cardNumber}}</td>
+    </tr>
+  </table>  
+</div>  
+
+</div>
